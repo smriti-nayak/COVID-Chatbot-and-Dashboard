@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CO-DASH</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Date', 'Total cases'],
+          ['January, 2020',  6484],
+          ['February, 2020',  86527],
+          ['March, 2020',  959269],
+          ['April, 2020',  3472614],
+          ['May, 2020',  6391755],
+          ['June, 2020',  10916826],
+          ['July, 2020',  18218946],
+          ['August, 2020',  26262409],
+          ['September, 2020',  34867075],
+          ['October, 2020',  46585907],
+          ['November, 2020',  64399846],
+          ['December, 2020',  83837988],
+          ['January, 2021',  103345234],
+          ['February, 2021',  114467174],
+          ['March, 2021',  129169897],
+          ['April, 2021',  151664673],
+          ['May, 2021',  170123695],
+        ]);
+
+        var options = {
+
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages':['geochart'],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Cases'],
+          ['United States', 34034308],
+          ['India', 27893472],
+          ['Brazil', 16471600],
+          ['France', 5657572],
+          ['Turkey', 5235978],
+          ['Russia', 5053748],
+          ['United Kingdom', 4480945],
+          ['Italy', 4213055],
+          ['Argentina', 3732263],
+          ['Germany', 3668658],
+          ['Spain', 3668658],
+          ['Colombia', 3363061],
+          ['Iran', 2893218],
+        ]);
+
+        var options = {};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">COVID DASHBOARD</a>
+</nav>
+
+<div class="container">
+  <div class="title">
+      <h1> COVID-19 Global Scenario</h1>
+  </div>
+
+    <div class="stats">
+      <h3> Till date, </h3>
+      <h1> 170,447,652 </h1>
+      <h3> cases have been confirmed worldwide. </h3>
+      <h3> Witnessing, </h3>
+        <div class="death">
+            <h1> 3,544,243 </h1>
+        </div>
+      <h3> death cases</h3>
+      <h3> and</h3>
+        <div class="recover">
+            <h1> 152,433,528</h1>
+        </div>
+      <h3> recoveries </h3>
+  </div>
+</div>
+
+    <div id="chart" align="center">
+        <h3>Rise in COVID cases since the outbreak of the pandemic</h3>
+        <div id="curve_chart" style="width: 900px; height: 500px"></div>
+
+        <div id="regions_div" style="width: 900px; height: 500px;"></div>
+    </div>
+
+<form action="/district.html" >
+      <div class="row">
+        <div class="col-md-4 text-center">
+            <label for="first_name"><b>COUNTRY</b></label>
+            <br>
+          <input placeholder="Enter Country" name="Country" id="first_name" type="text" class="validate">
+        </div>
+        <div class="col-md-4 text-center">
+
+          <label for="last_name"><b>STATE</b></label>
+            <br>
+          <input id="last_name" name="State" placeholder="Enter State"  type="text" class="validate">
+
+        </div>
+
+        <div class="col-md-4 text-center">
+            <label for="_name"><b>DISTRICT</b></label>
+            <br>
+          <input id="_name" name="District" placeholder="Enter District" type="text" class="validate">
+
+        </div>
+      </div>
+        <div>
+
+        </div>
+      <div class="col-md-12 text-center">
+
+          <!--<button type="submit" class="btn-large waves-effect waves-light orange">Predict Severity</button>-->
+          <input type="submit" value="Predict severity">
+      </div>
+    </form>
+
+<script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings =
+            {"appId":"27945fca2120a5f77d1dc022094a3222b","userId":"","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
+
+</body>
+</html>
