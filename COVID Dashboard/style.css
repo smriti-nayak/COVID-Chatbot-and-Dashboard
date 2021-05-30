@@ -1,0 +1,29 @@
+.container{
+    text-align:center;
+}
+
+.title{
+    text-align:centre;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.stats{
+    text-align:center;
+    padding-top: 25px;
+    padding-bottom: 50px;
+}
+
+.death{
+    text-align:center;
+    color:red;
+}
+
+.recover{
+    text-align:center;
+    color:green;
+}
+
+form{
+    padding-top: 50px;
+}
